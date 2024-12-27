@@ -4,6 +4,7 @@ import com.multi.language.localization.entity.CourseTranslation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Locale;
 import java.util.Optional;
 
 @Service
@@ -15,5 +16,10 @@ public class CourseTranslationRepositoryImpl implements CourseTranslationReposit
     @Override
     public Optional<CourseTranslation> findByCourseIdAndLanguage(Long courseId, String lang) {
         return courseTranslationJpa.findByCourse_IdAndLanguage(courseId,lang);
+    }
+
+    @Override
+    public CourseTranslation createCourseTranslation(CourseTranslation courseTranslation) {
+        return courseTranslationJpa.save(courseTranslation);
     }
 }

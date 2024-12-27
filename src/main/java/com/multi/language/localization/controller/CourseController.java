@@ -1,6 +1,7 @@
 package com.multi.language.localization.controller;
 
 import com.multi.language.localization.config.LocaleConfig;
+import com.multi.language.localization.entity.Courses;
 import com.multi.language.localization.service.CourseService;
 import com.multi.language.localization.service.LocalizationService;
 import lombok.RequiredArgsConstructor;
@@ -23,5 +24,10 @@ public class CourseController {
     @GetMapping("/welcome")
     public String welcome(Locale locale) {
         return localizationService.getLocaleMessage("welcome.message", locale);
+    }
+
+    @PostMapping
+    public Courses createCourse(@RequestParam String code,@RequestParam String title, Locale locale) {
+        return courseService.createCourse(code,title,locale);
     }
 }
